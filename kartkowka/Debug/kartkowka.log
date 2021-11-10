@@ -1,0 +1,3 @@
+﻿  kartkowka.cpp
+Z:\2019e\tad\konczyks\kartkowka\kartkowka\kartkowka.cpp(43,15): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+  kartkowka.vcxproj -> Z:\2019e\tad\konczyks\kartkowka\kartkowka\Debug\kartkowka.exe

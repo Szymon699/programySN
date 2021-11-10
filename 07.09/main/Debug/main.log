@@ -1,0 +1,3 @@
+﻿  main.cpp
+F:\Szymon Kończyk\07.09\main\main.cpp(11,13): warning C4101: "dzielnik": lokalna zmienna, do której nie istnieje odwołanie
+  main.vcxproj -> F:\Szymon Kończyk\07.09\main\Debug\main.exe

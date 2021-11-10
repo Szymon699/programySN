@@ -1,0 +1,3 @@
+﻿  TabliceWymiaroweWskazniki.cpp
+F:\Szymon Kończyk\gitHub\programyS\28.09\TabliceWymiaroweWskazniki\TabliceWymiaroweWskazniki.cpp(12,15): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+  TabliceWymiaroweWskazniki.vcxproj -> F:\Szymon Kończyk\gitHub\programyS\28.09\TabliceWymiaroweWskazniki\Debug\TabliceWymiaroweWskazniki.exe
