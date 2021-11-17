@@ -24,16 +24,21 @@ void MainWindow::wybierz(int przycisk){
     if(przycisk == 2) ui->k3->setEnabled(1);
 }
 
+void MainWindow::on_ustaw_clicked()
+{
+    pkt = ui->slider->value();
+}
+
 void MainWindow::wygrana(int k, int u){
     int wynik = (k-u+3)%3;
     if(wynik==1){
         wynik = ui->u1->text().toInt();
         wynik++;
-        ui->u1->setNum(wynik);
+        ui->ul->setNum(wynik);
     }else if(wynik == 2){
         wynik = ui->k1->text().toInt();
         wynik++;
-        ui->k1->setNum(wynik);
+       ui->kl->setNum(wynik);
     }
 }
 
@@ -66,7 +71,10 @@ void MainWindow::on_u3_clicked()
 
 void MainWindow::on_reset_clicked()
 {
-    ui->u1->setNum(0);
-    ui->k1->setNum(0);
+    ui->ul->setNum(0);
+    ui->kl->setNum(0);
 }
+
+
+
 

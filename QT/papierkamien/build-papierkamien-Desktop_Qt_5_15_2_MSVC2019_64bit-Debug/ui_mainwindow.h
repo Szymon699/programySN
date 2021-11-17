@@ -14,6 +14,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -31,6 +32,9 @@ public:
     QPushButton *reset;
     QLabel *ul;
     QLabel *kl;
+    QSlider *horizontalSlider;
+    QLabel *label;
+    QPushButton *ustaw;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -86,9 +90,21 @@ public:
         kl->setGeometry(QRect(340, 40, 121, 51));
         kl->setFont(font2);
         kl->setAlignment(Qt::AlignCenter);
+        horizontalSlider = new QSlider(centralwidget);
+        horizontalSlider->setObjectName(QString::fromUtf8("horizontalSlider"));
+        horizontalSlider->setGeometry(QRect(100, 330, 211, 21));
+        horizontalSlider->setOrientation(Qt::Horizontal);
+        label = new QLabel(centralwidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(190, 350, 21, 21));
+        label->setAlignment(Qt::AlignCenter);
+        ustaw = new QPushButton(centralwidget);
+        ustaw->setObjectName(QString::fromUtf8("ustaw"));
+        ustaw->setGeometry(QRect(330, 330, 80, 21));
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
+        QObject::connect(horizontalSlider, SIGNAL(valueChanged(int)), label, SLOT(setNum(int)));
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -105,6 +121,8 @@ public:
         reset->setText(QCoreApplication::translate("MainWindow", "reset", nullptr));
         ul->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         kl->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "  0", nullptr));
+        ustaw->setText(QCoreApplication::translate("MainWindow", "Ustaw", nullptr));
     } // retranslateUi
 
 };
