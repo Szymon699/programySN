@@ -1,3 +1,0 @@
-﻿  sortowaniegupie.cpp
-C:\Users\konczyks\Desktop\dodo\sortowaniegupie\sortowaniegupie.cpp(7,15): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
-  sortowaniegupie.vcxproj -> C:\Users\konczyks\Desktop\dodo\sortowaniegupie\Debug\sortowaniegupie.exe

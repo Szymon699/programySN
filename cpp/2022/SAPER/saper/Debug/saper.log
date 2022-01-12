@@ -1,0 +1,4 @@
+﻿  saper.cpp
+F:\SzymonKonczyk\gitHub\programySN\cpp\2022\SAPER\saper\saper.cpp(37,15): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+F:\SzymonKonczyk\gitHub\programySN\cpp\2022\SAPER\saper\saper.cpp(55,35): warning C4551: wywołaniu funkcji brakuje listy argumentów
+  saper.vcxproj -> F:\SzymonKonczyk\gitHub\programySN\cpp\2022\SAPER\saper\Debug\saper.exe

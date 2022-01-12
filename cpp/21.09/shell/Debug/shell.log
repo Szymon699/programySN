@@ -1,3 +1,0 @@
-﻿  shell.cpp
-F:\Szymon Kończyk\21.09\shell\shell.cpp(20,15): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
-  shell.vcxproj -> F:\Szymon Kończyk\21.09\shell\Debug\shell.exe
