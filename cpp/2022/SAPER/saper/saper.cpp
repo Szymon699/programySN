@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <ctime>
 
 using namespace std;
 
@@ -11,34 +12,64 @@ public:
     Pole();
     bool wpiszBombe();
     void dodaj();
-
 };
 
 class Metody : public Pole {
 public:
-    bool czyTrafiBombe(int);
+    bool czyTrafilBombe(int);
     void wyswietlBomby();
     void wyswietl();
-
 };
-const int n = 5; //wielkosc planszy n x n
+
+const int n = 5;
 const int m = 5; //ilosc bomb
-Metody tab[n+2][n+2];
+Metody tab[n + 2][n + 2];
 
 bool calaPlansza() {
     for (int i = 1; i <= n; i++)
         for (int j = 1; j <= n; j++)
             if (tab[i][j].klik == false) return true;
     return false;
-
 }
+
+void zera(int x, int y) {
+    for (int i = x - 1; i <= x + 1; i++)
+        for (int j = y - 1; j <= y + 1; j++)
+            if (tab[i][j].klik == false)
+                if (tab[i][j].wartosc == 0) {
+                    tab[i][j].klik = true;
+                    zera(i, j);
+                }
+                else tab[i][j].klik = true;
+}
+
+void zablokuj(int x, int y) {
+    for (int i = x - 1; i <= x + 1; i++)
+        for (int j = y - 1; j <= y + 1; j++)
+            tab[i][j].wartosc += 100;
+    tab[x][y].klik = true;
+}
+
+void odblokuj(int x, int y) {
+    for (int i = x - 1; i <= x + 1; i++)
+        for (int j = y - 1; j <= y + 1; j++)
+            tab[i][j].wartosc -= 100;
+}
+
 int main()
 {
     srand(time(NULL));
 
-    
-    int x, y,z, licznik=0;
+    int x, y, z, licznik = 0, xx, yy;
     bool bomba, koniec = true;
+
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= n; j++)
+            tab[i][j].wartosc = 0;
+
+    cin >> yy >> xx;
+
+    zablokuj(xx, yy);
 
     while (licznik < m) {
         x = rand() % n + 1;
@@ -51,35 +82,40 @@ int main()
                     tab[i][j].dodaj();
         }
     }
-    
-    while ((calaPlansza)&&(koniec)) {
-        cout << endl << "-----------------------------" << endl;
+
+    odblokuj(xx, yy);
+    zera(xx, yy);
+
+    for (int i = 1; i <= n; i++, cout << endl)
+        for (int j = 1; j <= n; j++)
+            tab[i][j].wyswietl();
+
+    while ((calaPlansza) && (koniec)) {
         cin >> y >> x >> z;
-        bomba = tab[x][y].czyTrafiBombe(z);
-        if (bomba) {
-            for (int i = 1; i <= n; i++, cout << endl)
-                for (int j = 1; j <= n; j++)
-                    tab[i][j].wyswietlBomby();
-            koniec = false;
-        }
-        else
+        bomba = tab[x][y].czyTrafilBombe(z);
+        if (bomba) koniec = false;
+        else {
+            if (tab[x][y].wartosc == 0) zera(x, y);
             for (int i = 1; i <= n; i++, cout << endl)
                 for (int j = 1; j <= n; j++)
                     tab[i][j].wyswietl();
+        }
     }
-   
+    for (int i = 1; i <= n; i++, cout << endl)
+        for (int j = 1; j <= n; j++)
+            tab[i][j].wyswietlBomby();
 }
 
 Pole::Pole()
 {
-    wartosc = 0;
+    wartosc = 100;
     klik = false;
     czyBomba = false;
 }
 
 bool Pole::wpiszBombe()
 {
-    if (wartosc == 9) return false;
+    if (wartosc >= 9) return false;
     else {
         wartosc = 9;
         return true;
@@ -88,10 +124,10 @@ bool Pole::wpiszBombe()
 
 void Pole::dodaj()
 {
-    if (wartosc != 9) wartosc ++ ;
+    if (wartosc != 9) wartosc++;
 }
 
-bool Metody::czyTrafiBombe(int z)
+bool Metody::czyTrafilBombe(int z)
 {
     if (!klik) {
         if (z == 1)
