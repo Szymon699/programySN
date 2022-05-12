@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <title>nauka</title>
+    <link rel="stylesheet" type="text/css" href="stylK.css">
+</html>
+<script>
+     window.addEventListener("keydown", function(event) {
+    const p = document.createElement("p");
+    p.textContent = `KeyboardEvent: key='${event.key}' | code='${event.code}'`;
+    document.getElementById("output").appendChild(p);
+    }, true);
+</script>
+<head></head>
+<body>
+    <p>Press keys on the keyboard to see what the KeyboardEvent's key and code
+        values are for each one.</p>
+     <div id="output">
+     </div>
+</body>

@@ -1,0 +1,57 @@
+@keyframes logoIn {
+    from {
+        top: -100%;
+    }
+    to {
+        top: 0;
+    }
+}
+
+@keyframes logoOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes logoScale {
+    from {
+        transform: scale(0.9);
+    }
+    to {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes bgLightIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.2;
+    }
+}
+
+@keyframes bgLightInGame {
+    from {
+        opacity: 0;
+        background: rgba(0,0,0,0);
+        background: radial-gradient(circle, rgba(255,255,255,.6) 0%, rgba(0,0,0,0) 60%);
+    }
+    to {
+        opacity: 0.2;
+        background: rgba(0,0,0,0);
+        background: radial-gradient(circle, rgba(255,255,255,.6) 0%, rgba(0,0,0,0) 60%);
+    }
+}
+
+@keyframes bgLightOut {
+    from {
+        opacity: 0.2;
+    }
+    to {
+        opacity: 0;
+    }
+}

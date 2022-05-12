@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Sudoku</title>
+
+    <link rel="icon" href="favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/animations.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/f3f2af9995.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="logo-container">
+        <div id="logo-wrapper">
+            <img src="img/logo.png" alt="Sudoku Logo">
+        </div>
+    </div>
+    <main>
+        <div id="board">
+
+        </div>
+        <div id="board-footer">
+            <div id="footer-logo">
+                <img src="img/logo.png" alt="logo">
+            </div>
+            <div id="footer-controls">
+                <ul id="controls">
+                    <li id="numpadBtn" class="controls-el"><i class="fas fa-calculator"></i></li>
+                    <li class="controls-el bulb"><i class="far fa-lightbulb"></i></li>
+                    <li class="controls-el"><i class="fas fa-eraser"></i></li>
+                    <li class="controls-el"><i class="fas fa-undo-alt"></i></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <div id="numpad">
+        <div id="numpad-header">
+            <i class="fas fa-calculator"></i>
+            <i class="fas fa-times numpad-close"></i>
+        </div>
+        <div id="numpad-nums">
+            <div class="numpad-num">1</div>
+            <div class="numpad-num">2</div>
+            <div class="numpad-num">3</div>
+            <div class="numpad-num">4</div>
+            <div class="numpad-num">5</div>
+            <div class="numpad-num">6</div>
+            <div class="numpad-num">7</div>
+            <div class="numpad-num">8</div>
+            <div class="numpad-num">9</div>
+        </div>
+    </div>
+    <div id="bg-light"></div>
+    <script src="js/game.js"></script>
+    <script src="js/controls.js"></script>
+    <script src="js/numpad.js"></script>
+</body>
+</html>

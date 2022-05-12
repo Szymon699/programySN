@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <title>nauka</title>
+    <link rel="stylesheet" type="text/css" href="styl.css">
+</html>
+<script>
+    function d(){
+        var a = document.getElementsByClassName('reccl');
+        for (var b = 0; b < a.length; b++) {
+            a[b].onclick = function(e){
+            //get child's id in element
+            alert(e.target.id);
+            
+            //get element's id
+            alert(e.currentTarget.id);
+            }
+        }
+}
+</script>
+<head>
+    <div class="reccl" id="allact" onclick="d()"><a href="#" class="a" id="b">All Activities</a></div>
+    <div class="reccl" id="lgns"><a href="#" class="a" id="bb">Logins</a></div>
+    <div class="reccl" id="dwld"><a href="#" class="a" id="bb">Download</a></div>
+</head>
