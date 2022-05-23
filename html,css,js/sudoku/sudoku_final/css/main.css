@@ -1,0 +1,293 @@
+@font-face {
+    font-family: 'WalkwaySB';
+    src: url("../assets/fonts/walkway/WalkwaySB.ttf");
+}
+
+@font-face {
+    font-family: 'WalkwayBold';
+    src: url("../assets/fonts/walkway/WalkwayBold.ttf");
+}
+
+@font-face {
+    font-family: 'WalkwayBlack';
+    src: url("../assets/fonts/walkway/WalkwayBlack.ttf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    font-family: 'Rubik', sans-serif;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background: #000000;
+}
+
+#bg-light {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0);
+    background: radial-gradient(circle, rgba(255,255,255,.5) 0%, rgba(0,0,0,0) 35%);
+    opacity: 0;
+    animation: bgLightIn 2s forwards 1s, bgLightOut 2s forwards 4.5s, bgLightInGame 2s forwards 6.5s;
+    pointer-events: none;
+}
+
+#logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 61px;
+}
+
+#logo-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    transform-origin: center center;
+    animation: logoScale 5s linear forwards 0s, logoOut 1s linear forwards 3.7s;
+}
+
+#logo-wrapper > img {
+    width: 100%;
+    position: absolute;
+    top: -100%;
+    animation: logoIn 1s forwards 0.5s;
+}
+
+main {
+    width: 520px;
+    border-radius: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    padding: 20px;
+    z-index: 9;
+    opacity: 0;
+    animation: mainIn 1s ease forwards 6s;
+}
+
+#board {
+    height: 520px;
+    width: 520px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.board-block {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.block-tile {
+    background-color: blue;
+    background-color: rgba(255,255,255,0.15);
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0,0,0,.5);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    border: 2px solid rgba(255,255,255,0.15);
+}
+
+.board-block:nth-child(even) .block-tile {
+    background-color: rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,255,255,0.1);
+}
+
+.tile-num {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 28px;
+    font-weight: 400;
+    text-shadow: 0 3px 5px rgba(0,0,0,.5);
+    color: rgba(255,255,255,1);
+    transition: top 0.3s ease;
+}
+
+.tile-highlight {
+    background-color: rgba(255, 255, 255, 0.28) !important;
+}
+
+.tile-error { background-color: rgba(255, 155, 155, 0.44) !important; }  .tile-highlightl { border-color: rgba(255, 255, 255, 0.5) !important; }
+
+.tile-highlight:not(.tile-blocked) .tile-num {
+    color: rgba(255,255,255,1);
+}
+
+.tile-highlight .tile-num {
+    color: rgba(255,255,255,1);
+}
+
+.tile-blocked .tile-num {
+    color: rgba(255,255,255,.45);
+}
+
+.tile-activated {
+    border-color: #fff !important;
+}
+
+#numpad {
+    width: 240px;
+    position: absolute;
+    z-index: 10;
+    border-radius: 8px;
+    overflow: hidden;
+    backdrop-filter: blur(6px);
+    display: none;
+    animation: numpadIn 0.5s ease forwards;
+    top: 30%;
+    left: 60%;
+}
+
+.numpad-show {
+    display: block !important;
+}
+
+#numpad-header {
+    padding: 10px 12px;
+    cursor: move;
+    background-color: rgba(255,255,255,0.15);
+    letter-spacing: 2px;
+    text-shadow: 0 3px 5px rgba(0,0,0,.3);
+}
+
+#numpad-nums {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 10px;
+    background-color: rgba(255,255,255,0.1);
+}
+
+.numpad-num {
+    text-align: center;
+    background-color: rgba(255,255,255,0.15);
+    height: 66px;
+    border-radius: 10px;
+    cursor: pointer;
+    line-height: 66px;
+    font-size: 32px;
+    transition: all 0.3s ease;
+    text-shadow: 0 3px 5px rgba(0,0,0,.5);
+    box-shadow: 0 5px 5px rgba(0,0,0,.3);
+    font-weight: 400;
+}
+
+.numpad-num:hover {
+    background-color: rgba(255,255,255,0.25);
+}
+
+.numpad-close {
+    float: right;
+    color: rgb(255, 131, 131);
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+#board-footer {
+    margin-top: 20px;
+}
+
+#board-header {
+    color: #ccc;
+    font-weight: 300;
+    text-align: left;
+    font-family: 'WalkwayBold', sans-serif;
+    letter-spacing: 1px;
+    font-size: 14px;
+    padding-bottom: 3px;
+}
+
+#timer {
+    font-family: 'WalkwayBold', sans-serif;
+    margin-left: 5px;
+    font-size: 16px;
+}
+
+#footer-logo {
+    float: left;
+}
+
+#footer-logo > img {
+    height: 18px;
+    padding-top: 2px;
+}
+
+#footer-controls {
+    float: right;
+}
+
+#controls {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin-top: 4px;
+}
+
+#controls li {
+    display: flex;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+#controls > li > i {
+    color: #ccc;
+    text-shadow: 0 3px 5px rgba(0,0,0,.3);
+}
+
+#controls > li:hover > i {
+    color: #fff;
+}
+
+.bulb > i {
+    transition: color .2s ease, text-shadow .5s ease;
+}
+
+.bulb-light > i {
+    text-shadow: 0 0 10px rgb(255, 216, 101) !important;
+    color: rgb(255, 234, 179) !important;
+}
+
+#win {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0,0,0,.5);
+    z-index: 100;
+    opacity: 0;
+    animation: winIn 1.5s ease forwards 0s;
+    display: none;
+}
+
+#win-text {
+    display: block;
+    font-size: 36px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    letter-spacing: 3px;
+    text-shadow: 0 3px 5px rgba(0,0,0,.5);
+}
